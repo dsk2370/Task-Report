@@ -8,13 +8,13 @@ class ProjectInherited(models.Model):
     _order = "id desc"
 
     # this field is added in order to detect and save which task were compleded on which date
-    
+
     date_done = fields.Datetime(compute='_compute_date_done',string='Done Date',store=True)
 
+    @api.one
     @api.depends('stage_id')
     def _compute_date_done(self):
-        for rec in self:
-            if rec.stage_id == 7:
-                rec.date_done = rec.date_last_stage_update
-            else:
-                rec.date_done = False
+        if self.stage_id.id == 7:
+            self.date_done = self.date_last_stage_update
+        else:
+            self.date_done = False

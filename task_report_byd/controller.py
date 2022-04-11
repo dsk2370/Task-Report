@@ -67,9 +67,8 @@ class website_task_report(http.Controller):
                         for item in dat_lst:
                             d[item['Project']].update(item)
                         r1 = list(d.values())
-                        qdata = {}
-                        
                         for dat in r1:
+                            qdata = {}
                             qdata.update({ "Project" : str(dat['Project'])})
                             
                             if dat.has_key('Open Tasks'):
