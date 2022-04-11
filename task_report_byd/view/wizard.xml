@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Get Report wizard -->
+        <record id="get_task_report_wizard_view" model="ir.ui.view">
+            <field name="name">Task Report Wizard</field>
+            <field name="model">task.report.wizard.byd</field>
+            <field name="arch" type="xml">
+                <form string="Get Task Report">
+                    <group>
+                        <group>
+                            <field name="user_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button string="Show Report" name="show_report" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <!-- Get Report wizard Action -->
+        <record id="action_get_task_report_wizard" model="ir.actions.act_window">
+            <field name="name">Get Task Report</field>
+            <field name="res_model">task.report.wizard.byd</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="get_task_report_wizard_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_task_report_byd" name="Task Report" action="action_get_task_report_wizard" groups="project.group_project_manager" parent="project.menu_project_management" sequence="50" />
+
+    </data>
+</openerp>

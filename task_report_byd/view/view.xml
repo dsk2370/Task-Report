@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Report Tree View -->
+        <record id="view_task_report_byd_tree" model="ir.ui.view">
+            <field name="name">task.report.byd.tree</field>
+            <field name="model">task.report.byd</field>
+            <field name="arch" type="xml">
+                <tree string="Task Report">
+                    <field name="name" invisible="1"/>
+                    <field name="user_id" invisible="1"/>
+                    <field name="qdata" invisible="1"/>
+                    <field name="image" widget="image" display="thumbnail"/>
+                    <field name="task_id"/>
+                    <field name="project_id"/>
+                    <field name="date_deadline"/>
+                    <field name="manager_id"/>
+                    <field name="stage_id"/>
+                </tree>
+            </field>
+        </record>
+        <!--  Filter to group by Owner -->
+        <record id="task_report_byd_search_view" model="ir.ui.view">   
+            <field name="name">task.report.byd.search</field>   
+            <field name="model">task.report.byd</field>   
+            <field name="arch" type="xml">       
+                <search string="Task Report">           
+                    <filter name="group_task_user_id" string="Task Owner" icon="terp-partner" context="{'group_by':'user_id'}"/>       
+                </search>   
+            </field>
+        </record>
+        <!-- Report Action -->
+        <record id="action_task_report_byd" model="ir.actions.act_window">
+            <field name="name">Task Report</field>
+            <field name="res_model">task.report.byd</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    
+</openerp>
