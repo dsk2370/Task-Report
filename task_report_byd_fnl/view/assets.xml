@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+<!-- THese are the datatable library assets -->
+    <template id="assets_backend" name="Task Report assets" inherit_id="web.assets_backend">
+        <xpath expr="//link" position="after">
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/dt/dt-1.10.22/datatables.min.css"/>
+        </xpath>
+        <xpath expr="//script" position="after">
+            <script type="text/javascript" src="https://cdn.datatables.net/r/dt/dt-1.10.22/datatables.min.js"></script>
+        </xpath>
+    </template>
+</data>
+</openerp>

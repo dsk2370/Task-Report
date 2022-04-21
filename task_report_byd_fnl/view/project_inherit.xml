@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- We are inheriting task form view  to add done_date field to view -->
+        <record id="byd_task_view_inherit" model="ir.ui.view">
+            <field name="name">project.task.form.byd.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='date_last_stage_update']" position="after">
+                    <field name="date_done"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- We are inheriting task stage form view to add stage_type field to view -->
+        <record id="byd_task_stage_view_inherit" model="ir.ui.view">
+            <field name="name">project.task.type.form.byd.inherit</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fold']" position="after">
+                    <field name="stage_type"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>

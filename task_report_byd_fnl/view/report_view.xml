@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+		<record model="ir.ui.view" id="task_report_byd_fnl_kanban_view">
+			<field name="name">Task Report</field>
+			<field name="model">task.report</field>
+			<field name="type">kanban</field>
+			<field name="arch" type="xml">
+				<kanban create="false">
+					<field name="name"/>
+					<templates>
+                     <!-- Refresh button to reload -->
+						<t t-name="kanban-box">
+								<div class="col-md-12">
+									<button id="refresh" class="btn btn-default btn-setting pull-right btn-dadhboard">
+										<i class="fa fa-refresh"/>
+										Refresh
+									</button>
+								</div>
+                                <br/>
+                                <!-- the datatable report view -->
+                                <div class="col-md-12">	
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													<i class="fa fa-bar-chart-o fa-fw"/>
+													TASK REPORT
+												</div>
+												<div class="panel-body">
+													<table id="task_report" class="display" cellspacing="0" width="100%">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Task Owner</th>
+                                                                <th>Name</th>
+                                                                <th>Deadline</th>
+                                                                <th>Project</th>
+                                                                <th>Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        
+                                                    </table>
+												</div>
+											</div>
+								</div>
+                                <!-- Load the script to view the report with data -->
+								<script src="/task_report_byd_fnl/static/src/js/task_report_byd_fnl.js"/>
+                                <!-- We introduced a modal for the purpose of popup view -->
+                                <div id="myModal" class="modal fade" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Owner Task Details</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table id="qres" class="display" cellspacing="0" width="100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Project</th>
+                                                        <th>Open Tasks</th>
+                                                        <th>Delayed Tasks</th>
+                                                        <th>Done this month</th>
+                                                        <th>Done last week</th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+						</t>
+					</templates>
+				</kanban>
+			</field>
+		</record>
+		<record id="task_report_byd_fnl_action_view" model="ir.actions.act_window">
+			<field name="name">Task Report</field>
+			<field name="res_model">task.report</field>
+			<field name="view_mode">kanban</field>
+		</record>
+        <!-- Menuitem for the report action -->
+        <menuitem id="menu_task_report_byd" name="Task Report" action="task_report_byd_fnl_action_view" groups="project.group_project_manager" parent="project.menu_project_management" sequence="50" />
+
+	</data>
+</openerp>
