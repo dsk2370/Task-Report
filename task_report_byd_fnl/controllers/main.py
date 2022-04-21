@@ -75,22 +75,11 @@ class website_task_report(http.Controller):
                 # converting the result to json format
                 _logger.info("===qlist====%s",qlist)
                 # res = json.dumps(qlist)
-                return http.request.make_response(json.dumps(qlist,{
-                    'Cache-Control': 'no-cache', 
-                    'Content-Type': 'JSON; charset=utf-8',
-                    'Access-Control-Allow-Origin':  '*',
-                    'Access-Control-Allow-Methods': 'GET',
-                    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, X-Requested-With',
-                    })) 
+                return (json.dumps(qlist)) 
         else:
             res = {"result":"Invalid API Key"}
-            return http.request.make_response(json.dumps(res,{
-                    'Cache-Control': 'no-cache', 
-                    'Content-Type': 'JSON; charset=utf-8',
-                    'Access-Control-Allow-Origin':  '*',
-                    'Access-Control-Allow-Methods': 'GET',
-                    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, X-Requested-With',
-                    }))                     
+            return json.dumps(res)       
+             
     
     # We have introduced this controller in order to get tasks to show in report initially with no filter.
     @http.route('/get/tasks', type='http', auth='user')
