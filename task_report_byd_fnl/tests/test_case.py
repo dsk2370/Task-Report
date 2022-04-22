@@ -22,7 +22,7 @@ class TestTaskDoneStage(TransactionCase):
         # lets update demo task's state 
         if task_id:
             task_id.write({'stage_id':stage_id.id})
-        # lets check if the date is in today's date
+        # lets check if the date is in today's date by extracting date from datetime field
         today_date  = str(datetime.datetime.now().date())
         res =  str(datetime.datetime.strptime(task_id.date_done, "%Y-%m-%d %H:%M:%S").date())
         self.assertEquals(today_date,res, "The done date must be equal to today")
